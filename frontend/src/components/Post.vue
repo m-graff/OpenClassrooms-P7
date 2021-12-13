@@ -49,8 +49,8 @@
                 <p class="post-txt">{{post.message}}</p>
             </div>
             <div class="post-img">
-                <img :src="`http://localhost:3000${post.media}`" title="Image du post" class="wall-img" v-if="post.media != 'null'">
-                <img :src="post.link" title="Image du post" class="wall-img" v-if="post.link && post.media =='null'">
+                <img :src="`http://localhost:3000${post.media}`" title="Image du post" class="wall-img" v-if="post.media">
+                <img :src="post.link" title="Image du post" class="wall-img" v-if="post.link && !post.media">
             </div>
             <div class="post-likes">
                 <img src="../assets/pouce.png" title="Likes" class="wall-likes">

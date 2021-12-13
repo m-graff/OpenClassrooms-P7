@@ -65,7 +65,7 @@
         background-image: url("../assets/test2.jpg");
         background-repeat: no-repeat;
         background-size: cover;
-        height: 70vh;
+        height: 80vh;
         padding: 5%;
     }
 
