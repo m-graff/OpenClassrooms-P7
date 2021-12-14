@@ -58,16 +58,10 @@
                     this.$router.push({ name:'Wall' }); 
                 })
                 .catch(() => {
-                    console.log("Identifiant ou mot de passe incorrect"); 
                     window.alert("Identifiant ou mot de passe incorrect");
                 });    
             }  
         },
-        // ??? 
-        clicRegister(e) {
-            e.preventDefault()
-            this.changeForm(true) 
-        }
     }
     
 

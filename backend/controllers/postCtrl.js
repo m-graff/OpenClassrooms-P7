@@ -22,11 +22,10 @@ exports.createPost = (req, res, next) => {
         }
         // Préparation de la requête SQL
         let sqlCreatePost = `INSERT INTO publications (utilisateur_id, message, media, link, date_ajout) VALUES (?, ?, ?, ?, NOW())`;
-        console.log(req.userId)
         // Envoi de la requête à la BDD en vérifiant le statut de l'utilisateur et maj de l'odre des posts
         db.execute(sqlCreatePost, [req.userId, req.body.message, media, req.body.link], (error, publication) => {
             if (!error) {
-                db.query(`SELECT publications.*, utilisateurs.nom, utilisateurs.prenom,
+                db.query(`SELECT publications.*, utilisateurs.nom, utilisateurs.prenom, utilisateurs.image,
                 IF(publications.utilisateur_id = ${req.userId} OR "${req.status}" = "admin", 1, 0) AS editable 
                 FROM publications JOIN utilisateurs ON publications.utilisateur_id = utilisateurs.id WHERE publications.id = LAST_INSERT_ID()`,(error, publication) => {
                     res.status(201).json(publication[0]);
@@ -36,8 +35,6 @@ exports.createPost = (req, res, next) => {
                 }
             });
 };
-
-
 
 
 
@@ -95,7 +92,6 @@ exports.getOnePost = (req, res, next) => {
 
 // Récupération de l'intégralité des publications  
 exports.getAllPosts = (req, res, next) => {
-    console.log(req.status);
     db.query(`SELECT publications.*, utilisateurs.nom, utilisateurs.prenom, utilisateurs.image,
     (SELECT COUNT(*) FROM likes WHERE publication_id = publications.id) AS likes,
     IF(publications.utilisateur_id = ${req.userId} OR "${req.status}" = "admin", 1, 0) AS editable

@@ -126,14 +126,12 @@
             // Suppression du compte de l'utilisateur
             deleteUser(id) {
                 if (window.confirm("ATTENTION : Vous êtes sur le point de supprimer votre compte ! Toute suppression est définitive, êtes-vous certain de ce choix ?")) {
-                    const token = localStorage.getItem('token')
-                    console.log(token);
                     axios
                         .delete(`http://localhost:3000/api/users/${id}`, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${this.token}`,
-                    },
+                            headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${this.token}`,
+                            },
                     })
                     .then(res => {
                         if (res) {
@@ -156,14 +154,16 @@
                         method: "post",
                         url: `http://localhost:3000/api/users/${id}/image`,
                         data: formData,
-                        headers: { "Content-Type": "multipart/form-data",
-                                    Authorization: `Bearer ${this.token}`, },
+                        headers: { 
+                            "Content-Type": "multipart/form-data",
+                            Authorization: `Bearer ${this.token}`, 
+                        },
                     })
                     .then((res) => {
                         this.user.image = res.data.path
                     })
                     .catch((e) => {
-                    console.log(e);
+                        console.log(e);
                 });
             },
         }
@@ -179,7 +179,7 @@
         background-image: url("../assets/test2.jpg");
         background-repeat: no-repeat;
         background-size: cover;
-        height: 80vh;
+        height: 100vh;
         padding: 3%;
     }
 

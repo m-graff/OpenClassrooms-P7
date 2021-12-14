@@ -89,7 +89,8 @@
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${this.token}`,
                 },
-            }).then(res => res.json()).then(res => {
+            })
+            .then(res => res.json()).then(res => {
                 this.users = res;
             }) 
         },
@@ -106,6 +107,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         height: auto;
+        min-height: 100vh;
         padding: 3%;
     }
 

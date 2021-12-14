@@ -92,18 +92,17 @@
             },
             // Récupération du post à modifier 
             getOnePost() {
-            const postId = this.$route.params.id;
-            console.log("publication id:" + postId);
-            axios
-                .get(`http://localhost:3000/api/posts/${postId}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${this.token}`,
-                },
-                })
-                .then((res) => {
-                this.post = res.data;
-                });
+                const postId = this.$route.params.id;
+                axios
+                    .get(`http://localhost:3000/api/posts/${postId}`, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${this.token}`,
+                        },
+                    })
+                    .then((res) => {
+                        this.post = res.data;
+                    });
             },
             // Modification du post 
             updatePost(event) {
@@ -117,8 +116,10 @@
                     method: "put",
                     url: `http://localhost:3000/api/posts/${postId}`,
                     data: formData,
-                    headers: { "Content-Type": "multipart/form-data",
-                                Authorization: `Bearer ${this.token}` },
+                    headers: { 
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${this.token}` 
+                    },
                 })
                 // Une fois les vérifications et modifications effectuées, redirection vers le Wall
                 .then(() => {

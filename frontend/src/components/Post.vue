@@ -146,9 +146,6 @@
                 reveleComment: false
             }
         },
-        mounted() {
-            console.log(this.commentaires);
-        },
         methods: {
             // Fonction fermant automatiquement la partie option de post dès lors que l'utilisateur click au délà des boutons modifier et supprimer 
             clickOutside() {

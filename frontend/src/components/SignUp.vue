@@ -81,7 +81,7 @@
                             url: "http://localhost:3000/api/users/signup",
                             data: this.signUpForm,
                             headers: { "Content-Type": "application/json" },
-                            })
+                        })
                         // Inscription réussite, maj du localStorage et redirection sur le Login
                         .then(reponse => { console.log(reponse)
                             alert("Inscription réussite ! Veuillez vous connecter pour accéder à votre compte !")

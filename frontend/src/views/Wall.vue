@@ -79,8 +79,10 @@
                     method: "post",
                     url: "http://localhost:3000/api/posts",
                     data: formData,
-                    headers: { "Content-Type": "multipart/form-data",
-                                Authorization: `Bearer ${this.token}`},
+                    headers: { 
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${this.token}`
+                    },
                 })
                 .then(response => { 
                     const post = response.data;
@@ -90,20 +92,17 @@
             },
             // Suppression d'une publication 
             deletePost(postId) {
-                const token = localStorage.getItem('token')
-                console.log(token); 
                 axios
                     .delete(`http://localhost:3000/api/posts/${postId}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${this.token}`,
-                    },
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${this.token}`,
+                        },
                     })
                     .then(() => {
                         this.posts = this.posts.filter( post => {
                             return post.id != postId;
                     })
-                    console.log("Post supprimé !");
                 }); 
             }, 
             // Ajout d'un like 
@@ -112,8 +111,10 @@
                     method: "post",
                     url: "http://localhost:3000/api/likes",
                     data: { postId },
-                    headers: { "Content-Type": "application/json",
-                                Authorization: `Bearer ${this.token}` },
+                    headers: { 
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${this.token}` 
+                    },
                 })
                 .then(reponse => { 
                     for (let post in this.posts) {
@@ -134,8 +135,10 @@
                     method: "post",
                     url: "http://localhost:3000/api/comments",
                     data: { postId, message },
-                    headers: { "Content-Type": "application/json",
-                                Authorization: `Bearer ${this.token}`},
+                    headers: { 
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${this.token}`
+                    },
                 })
                 .then(() => { 
                     this.loadComments(postId);
@@ -146,8 +149,10 @@
                 axios({
                     method: "get",
                     url: `http://localhost:3000/api/comments/${postId}`,
-                    headers: { "Content-Type": "application/json",
-                                Authorization: `Bearer ${this.token}` },
+                    headers: { 
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${this.token}` 
+                    },
                 })
                 .then((response) => {
                     this.comments = {

@@ -7,11 +7,9 @@ require('dotenv').config();
 
 // Enregistrement d'un nouvel utilisateur
 exports.signup = (req, res, next) => {
-    console.log(req.body);
     // Hashage du mot de passe via Bcrypt (10 passages)
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
-            console.log(hash, db);
             // Sauvegarde du nouvel utilisateur dans la base de données SQL
             db.query(`INSERT INTO utilisateurs (nom, prenom, email, password, image) VALUES ('${req.body.nom}', '${req.body.prenom}', '${req.body.email}', '${hash}', '')`, (error, result) => {
             if (error) {
@@ -38,7 +36,6 @@ exports.login = (req, res, next) => {
                     res.status(401).json({ message: 'Mot de passe incorrect' })
                     // Si le mot de passe correspond :
                     } else {
-                    console.log(email, "s'est connecté")
                     let status = ''
                     // Vérification du niveau d'accès de l'utilisateur afin de lui attribuer le statut d'admin ou de membre
                         if (results[0].niveau_acces === 1) {
