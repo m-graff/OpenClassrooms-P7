@@ -100,7 +100,7 @@
         methods: {
             // Récupération des informations de l'utilisateur 
             getUserProfil() {
-                const userId = JSON.parse(localStorage.id);
+                const userId = localStorage.id;
                 axios.get(`http://localhost:3000/api/users/${userId}`, {
                     headers: {
                         "Content-Type" : "application/json",
@@ -108,6 +108,9 @@
                     },
                 }).then((res) => {
                     this.user = res.data;
+                })
+                .catch(() => {
+                    this.$router.push({ name:'Home' });
                 });
             },
             // Modification du compte de l'utilisateur

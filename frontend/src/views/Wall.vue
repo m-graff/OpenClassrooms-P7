@@ -60,9 +60,15 @@
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${this.token}`,
                 },
-                }).then(res => res.json()).then(res => {
-                this.posts = res;
-            }) 
+            })
+            .then(res => { 
+                if(res.status == 401) {
+                    this.$router.push({ name:'Home' }); 
+                    return
+                }
+                return res.json()
+            })
+            .then(res => {this.posts = res})
         },
 
         methods: {

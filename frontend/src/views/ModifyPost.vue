@@ -102,7 +102,10 @@
                     })
                     .then((res) => {
                         this.post = res.data;
-                    });
+                    })
+                    .catch(() => {
+                    this.$router.push({ name:'Home' });
+                });
             },
             // Modification du post 
             updatePost(event) {

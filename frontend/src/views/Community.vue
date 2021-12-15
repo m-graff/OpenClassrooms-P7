@@ -90,7 +90,13 @@
                     Authorization: `Bearer ${this.token}`,
                 },
             })
-            .then(res => res.json()).then(res => {
+            .then(res => { 
+                if(res.status == 401) {
+                    this.$router.push({ name:'Home' }); 
+                    return
+                }
+                return res.json()
+            }).then(res => {
                 this.users = res;
             }) 
         },

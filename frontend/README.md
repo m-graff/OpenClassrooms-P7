@@ -1,4 +1,4 @@
-# groupo
+### How to make this project work:
 
 ## Project setup
 ```

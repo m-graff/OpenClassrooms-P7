@@ -6,14 +6,7 @@ This is an exercice as part of my developer training for OpenClassrooms. This is
 
 ### How to make this project work:
 
-
-#### Go to the backend folder 
-Open your terminal and run :  
-node server
-
-#### Go to the frontend folder  
-Open your terminal and run :   
-npm run serve
+Please follow the instructions in backend & frontend folders
 
 ----
 

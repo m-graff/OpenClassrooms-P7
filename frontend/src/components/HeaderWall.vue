@@ -12,9 +12,9 @@
             <router-link to="/profil" title="Profil" class="profil-header">
                 <i class="fas fa-user-circle"></i>
             </router-link>
-            <router-link to="/" title="Se déconnecter" class="deconnect-header">
+            <a href="" @click.prevent="deconnexion" title="Se déconnecter" class="deconnect-header"> 
                 <i class="fas -solid fa-power-off"></i>
-            </router-link>
+            </a>
         </nav>
 
     </header> 
@@ -24,7 +24,13 @@
 <script>
 
     export default {
-        name: 'HeaderWall'
+        name: 'HeaderWall',
+        methods: {
+            deconnexion() {
+                localStorage.clear();
+                this.$router.push({ name:'Home' }); 
+            }
+        }
     }
 
 </script> 
